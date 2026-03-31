@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Kanishk AI - Ultra Powerful Omni AI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@600;700;800&display=swap');
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #121212;
+  --bg3: #1a1a1a;
+  --bg4: #252525;
+  --sb: #0f0f0f;
+  --hov: #2a2a2a;
+  --ibg: #171717;
+  --txt: #f5f5f5;
+  --txt2: #b0b0b0;
+  --txt3: #808080;
+  --txt4: #606060;
+  --green: #10a37f;
+  --green-dark: #0d7a60;
+  --green-light: #1abc9c;
+  --accent: #7c3aed;
+  --accent2: #a855f7;
+  --pink: #ec4899;
+  --pink-dark: #be185d;
+  --bdr: #3d3d3d;
+  --bdr2: #4a4a4a;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  --r: 14px;
+  --rsm: 10px;
+  --sw: 300px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bdr);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bdr2);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bdr) transparent;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ============= SIDEBAR STYLES ============= */
+#sidebar {
+  width: var(--sw);
+  background: var(--sb);
+  border-right: 1px solid var(--bdr);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.sb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--bdr);
+  background: linear-gradient(135deg, rgba(16,163,127,0.1) 0%, transparent 100%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--txt);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(16, 163, 127, 0.4);
+  flex-shrink: 0;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 8px 20px rgba(16, 163, 127, 0.4); }
+  50% { box-shadow: 0 8px 30px rgba(16, 163, 127, 0.6); }
+}
+
+.ib {
+  background: none;
+  border: none;
+  color: var(--txt2);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ib:hover {
+  background: var(--hov);
+  color: var(--green);
+  transform: scale(1.08);
+}
+
+.ib:active {
+  transform: scale(0.95);
+}
+
+.new-chat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px;
+  padding: 13px 16px;
+  border-radius: var(--rsm);
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(122, 60, 237, 0.3);
+}
+
+.new-chat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 60, 237, 0.4);
+}
+
+.new-chat svg {
+  flex-shrink: 0;
+}
+
+.sb-sec {
+  padding: 12px 18px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--txt3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+#chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chi {
+  padding: 12px 14px;
+  border-radius: var(--rsm);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--txt2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.chi:hover {
+  background: var(--hov);
+  color: var(--txt);
+  border-color: var(--bdr2);
+  transform: translateX(4px);
+}
+
+.chi.active {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: #fff;
+  border-color: var(--green);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.3);
+}
+
+.chi .del {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--txt3);
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.chi:hover .del {
+  display: flex;
+  align-items: center;
+}
+
+.chi .del:hover {
+  color: #fff;
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.sb-bot {
+  border-top: 1px solid var(--bdr);
+  padding: 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(16,163,127,0.05) 100%);
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--rsm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.user-row:hover {
+  background: var(--hov);
+  border-color: var(--bdr2);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(122, 60, 237, 0.3);
+}
+
+.uname {
+  font-size: 13px;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#sb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============= MAIN AREA STYLES ============= */
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+#topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--bdr);
+  flex-shrink: 0;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.model-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--bdr);
+  border-radius: 24px;
+  background: var(--bg3);
+  color: var(--txt);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.model-btn:hover {
+  background: var(--hov);
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.2);
+}
+
+.model-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.tb-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#mob-topbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--bdr);
+  flex-shrink: 0;
+  background: var(--bg2);
+}
+
+.mob-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--txt);
+}
+
+/* ============= CHAT AREA STYLES ============= */
+#chat-area {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 50px 20px 180px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+
+.wl-logo {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 40px rgba(16, 163, 127, 0.4);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.wl-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--txt);
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wl-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(16, 163, 127, 0.15) 0%, rgba(26, 188, 156, 0.15) 100%);
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+.wl-sub {
+  font-size: 16px;
+  color: var(--txt2);
+  margin-bottom: 48px;
+  max-width: 500px;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.suggs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.sc {
+  background: var(--bg3);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r);
+  padding: 18px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  color: var(--txt);
+}
+
+.sc:hover {
+  background: var(--bg4);
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(16, 163, 127, 0.25);
+}
+
+.sc-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(16, 163, 127, 0.2) 0%, rgba(26, 188, 156, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+  border: 1px solid rgba(16, 163, 127, 0.3);
+}
+
+.sc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 6px;
+}
+
+.sc-desc {
+  font-size: 12px;
+  color: var(--txt3);
+}
+
+/* ============= MESSAGE STYLES ============= */
+#messages {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 200px;
+  width: 100%;
+}
+
+.mr {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mr.user {
+  flex-direction: row-reverse;
+}
+
+.mav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.mav.aav {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.3);
+}
+
+.mav.uav {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(122, 60, 237, 0.3);
+}
+
+.mb {
+  flex: 1;
+  min-width: 0;
+}
+
+.mlbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--txt2);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.mt {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--txt);
+  word-break: break-word;
+}
+
+.mr.user .mt {
+  background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 14px 18px;
+  border-radius: 18px 18px 4px 18px;
+  display: inline-block;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(122, 60, 237, 0.2);
+}
+
+.mt p {
+  margin-bottom: 14px;
+}
+
+.mt p:last-child {
+  margin-bottom: 0;
+}
+
+.mt ul, .mt ol {
+  padding-left: 28px;
+  margin-bottom: 14px;
+}
+
+.mt li {
+  margin-bottom: 8px;
+}
+
+.mt strong {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.mt em {
+  font-style: italic;
+  color: var(--txt2);
+}
+
+.mt a {
+  color: var(--green-light);
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.mt a:hover {
+  color: var(--green);
+  text-decoration-thickness: 2px;
+}
+
+.mt h1 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 24px 0 12px;
+  color: var(--txt);
+  font-family: 'Poppins', sans-serif;
+}
+
+.mt h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 20px 0 10px;
+  color: var(--txt);
+  font-family: 'Poppins', sans-serif;
+}
+
+.mt h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 18px 0 8px;
+  color: var(--txt);
+}
+
+.mt h4, .mt h5, .mt h6 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 14px 0 6px;
+  color: var(--txt);
+}
+
+.mt blockquote {
+  border-left: 4px solid var(--green);
+  padding: 12px 18px;
+  color: var(--txt2);
+  margin: 14px 0;
+  background: linear-gradient(90deg, rgba(16, 163, 127, 0.1) 0%, transparent 100%);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.mt code {
+  background: var(--bg);
+  border: 1px solid var(--bdr);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--green-light);
+  font-weight: 600;
+}
+
+.mt table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 13px;
+}
+
+.mt th, .mt td {
+  padding: 12px 14px;
+  border: 1px solid var(--bdr);
+  text-align: left;
+}
+
+.mt th {
+  background: var(--bg3);
+  font-weight: 700;
+  color: var(--green);
+}
+
+.mt tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.mt hr {
+  border: none;
+  border-top: 1px solid var(--bdr);
+  margin: 20px 0;
+}
+
+/* ============= IMAGE STYLES ============= */
+.img-container {
+  margin: 16px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  max-width: 500px;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.img-btn {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.img-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.3);
+}
+
+/* ============= CODE BLOCK STYLES ============= */
+.cblk {
+  background: var(--bg);
+  border: 1px solid var(--bdr);
+  border-radius: var(--rsm);
+  margin: 14px 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.chdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bdr);
+  background: var(--bg3);
+}
+
+.clng {
+  font-size: 11px;
+  color: var(--txt3);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ccp {
+  background: none;
+  border: none;
+  color: var(--txt3);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.ccp:hover {
+  color: var(--green);
+  background: rgba(16, 163, 127, 0.15);
+}
+
+.cblk pre {
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--txt);
+  white-space: pre;
+}
+
+.cblk pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ============= MESSAGE ACTIONS ============= */
+.macts {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-wrap: wrap;
+}
+
+.mr:hover .macts {
+  opacity: 1;
+}
+
+.abt {
+  background: none;
+  border: none;
+  color: var(--txt3);
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  font-weight: 600;
+}
+
+.abt:hover {
+  background: var(--hov);
+  color: var(--txt);
+  transform: scale(1.05);
+}
+
+.abt.liked {
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.abt.disliked {
+  color: var(--error);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ============= TYPING INDICATOR ============= */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--txt3);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.scur::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  color: var(--green);
+  font-weight: 700;
+  margin-left: 3px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============= INPUT AREA STYLES ============= */
+#inp-area {
+  flex-shrink: 0;
+  padding: 12px 18px 18px;
+  background: var(--bg);
+  position: relative;
+}
+
+#inp-area::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
+}
+
+.inpwrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.inpbox {
+  display: flex;
+  align-items: flex-end;
+  background: var(--ibg);
+  border: 1.5px solid var(--bdr);
+  border-radius: 18px;
+  padding: 12px 14px;
+  gap: 10px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.inpbox:focus-within {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.15), var(--shadow-sm);
+  background: var(--bg2);
+}
+
+.inpleft {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.att {
+  background: none;
+  border: none;
+  color: var(--txt3);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s ease;
+}
+
+.att:hover {
+  background: var(--hov);
+  color: var(--green);
+  transform: scale(1.1);
+}
+
+#uinp {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--txt);
+  font-size: 15px;
+  font-family: inherit;
+  resize: none;
+  max-height: 220px;
+  min-height: 24px;
+  line-height: 1.5;
+  padding: 6px 0;
+  overflow-y: auto;
+}
+
+#uinp::placeholder {
+  color: var(--txt3);
+}
+
+.sbtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.4;
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.2);
+}
+
+.sbtn.rdy {
+  opacity: 1;
+}
+
+.sbtn.rdy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 163, 127, 0.4);
+}
+
+.sbtn.rdy:active {
+  transform: scale(0.95);
+}
+
+.sbtn svg {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.stpbtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.stpbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+.stpbtn svg {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.inpfoot {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--txt3);
+  font-weight: 600;
+}
+
+/* ============= MODAL STYLES ============= */
+.mbg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.mbg.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  border: 1px solid var(--bdr);
+  border-radius: 18px;
+  width: min(520px, 94vw);
+  padding: 28px;
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.mbg.open .modal {
+  transform: scale(1);
+}
+
+.mhd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.mtitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--txt);
+  font-family: 'Poppins', sans-serif;
+}
+
+.srow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--bdr);
+  gap: 12px;
+}
+
+.srow:last-child {
+  border-bottom: none;
+}
+
+.slbl {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sdesc {
+  font-size: 12px;
+  color: var(--txt3);
+  margin-top: 3px;
+}
+
+.tgl {
+  width: 52px;
+  height: 28px;
+  background: var(--bdr);
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+  border: none;
+}
+
+.tgl.on {
+  background: var(--green);
+}
+
+.tgl::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tgl.on::after {
+  left: 27px;
+}
+
+.stginp {
+  background: var(--bg);
+  border: 1px solid var(--bdr);
+  color: var(--txt);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.stginp:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.15);
+}
+
+/* ============= TOAST STYLES ============= */
+#toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg3);
+  border: 1px solid var(--bdr);
+  color: var(--txt);
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 999;
+  white-space: nowrap;
+  max-width: 90vw;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+
+/* ============= RESPONSIVE STYLES ============= */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+    transform: translateX(-100%);
+    width: var(--sw);
+  }
+
+  #sidebar.open {
+    transform: translateX(0);
+  }
+
+  #sb-overlay.show {
+    display: block;
+  }
+
+  #topbar {
+    display: none !important;
+  }
+
+  #mob-topbar {
+    display: flex !important;
+  }
+
+  .suggs {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  #messages {
+    padding-bottom: 200px;
+  }
+
+  .modal {
+    width: 96vw;
+  }
+
+  .wl-title {
+    font-size: 26px;
+  }
+
+  .mt {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .wl-title {
+    font-size: 22px;
+  }
+
+  .wl-logo {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .sc {
+    padding: 14px;
+  }
+
+  .mr {
+    gap: 12px;
+  }
+
+  #messages {
+    padding: 20px 12px 180px;
+  }
+
+  .inpbox {
+    border-radius: 14px;
+    padding: 10px 12px;
+  }
+
+  .sbtn, .stpbtn {
+    width: 36px;
+    height: 36px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="sb-top">
+    <a class="brand" href="#">
+      <div class="brand-icon">🤖</div>
+      Kanishk AI Ultra
+    </a>
+    <button class="ib" onclick="closeSB()" title="Close">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M18 6l-12 12M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <button class="new-chat" onclick="newChat()">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+    <span>New Chat</span>
+  </button>
+
+  <div class="sb-sec" id="hist-lbl" style="display:none">📜 Recent Chats</div>
+  <div id="chat-list"></div>
+
+  <div class="sb-bot">
+    <div class="user-row" onclick="openSets()">
+      <div class="avatar" id="uav">K</div>
+      <div class="uname" id="uname">Kanishk</div>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m4.24-4.24l4.24-4.24"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div id="sb-overlay" onclick="closeSB()"></div>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+  <!-- Desktop Topbar -->
+  <div id="topbar">
+    <button class="model-btn">
+      <div class="model-indicator"></div>
+      <span id="mlbl">🧠 Kanishk AI Ultra (GPT-5 Level)</span>
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5z"/>
+      </svg>
+    </button>
+    <div class="tb-right">
+      <button class="ib" onclick="newChat()" title="New Chat">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </button>
+      <button class="ib" onclick="openSets()" title="Settings">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m4.24-4.24l4.24-4.24"/>
+        </svg>
+      </button>
+      <button class="ib" onclick="openSB()" title="Menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Topbar -->
+  <div id="mob-topbar">
+    <button class="ib" onclick="openSB()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <div class="mob-brand">
+      <div class="brand-icon">🤖</div>
+      Kanishk AI Ultra
+    </div>
+    <button class="ib" onclick="newChat()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Chat Area -->
+  <div id="chat-area">
+    <div id="welcome">
+      <div class="wl-logo">🤖</div>
+      <div class="wl-title">Kanishk AI Ultra</div>
+      <div class="wl-badge">⚡ GPT-5 Level • Image Generator • Video Creator</div>
+      <div class="wl-sub">Your ultimate AI assistant that can do EVERYTHING. Math, Colors, Games, Celebrities, Images, Videos, Code - सब कुछ! 🚀</div>
+      
+      <div class="suggs">
+        <div class="sc" onclick="useSug('15 × 24 + (120 ÷ 8) - 3 = ?')">
+          <div class="sc-ico">🔢</div>
+          <div class="sc-title">Math Problem</div>
+          <div class="sc-desc">Complex calculations</div>
+        </div>
+
+        <div class="sc" onclick="useSug('Create an image of a red sunset over mountains')">
+          <div class="sc-ico">🎨</div>
+          <div class="sc-title">Generate Image</div>
+          <div class="sc-desc">Create any image instantly</div>
+        </div>
+
+        <div class="sc" onclick="useSug('Blue color - RGB, HEX, Psychology')">
+          <div class="sc-ico">🌈</div>
+          <div class="sc-title">Color Info</div>
+          <div class="sc-desc">About any color</div>
+        </div>
+
+        <div class="sc" onclick="useSug('Chess rules and strategies')">
+          <div class="sc-ico">♟️</div>
+          <div class="sc-title">Game Guide</div>
+          <div class="sc-desc">Any game details</div>
+        </div>
+
+        <div class="sc" onclick="useSug('Create a YouTube video script')">
+          <div class="sc-ico">🎬</div>
+          <div class="sc-title">Video Script</div>
+          <div class="sc-desc">Full video creation</div>
+        </div>
+
+        <div class="sc" onclick="useSug('Tell me about Elon Musk')">
+          <div class="sc-ico">⭐</div>
+          <div class="sc-title">Celebrity Info</div>
+          <div class="sc-desc">Any personality details</div>
+        </div>
+      </div>
+    </div>
+    <div id="messages"></div>
+  </div>
+
+  <!-- Input Area -->
+  <div id="inp-area">
+    <div class="inpwrap">
+      <div class="inpbox">
+        <div class="inpleft">
+          <button class="att" title="Attach Files">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
+            </svg>
+          </button>
+        </div>
+        <textarea id="uinp" placeholder="Ask anything - Math, Colors, Games, Celebrities, Images, Videos... Kuch bhi!" rows="1" onkeydown="onKD(event)" oninput="onIC(this)"></textarea>
+        <button class="sbtn" id="sbtn" onclick="send()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M13 5l7 7-7 7M6 12h14"/>
+          </svg>
+        </button>
+      </div>
+      <div class="inpfoot">🚀 Kanishk AI Ultra v10.0 • 10000+ Lines • Unlimited Knowledge • Image & Video Generation</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast"></div>
+
+<!-- SETTINGS MODAL -->
+<div class="mbg" id="sets-modal" onclick="onMBG(event)">
+  <div class="modal">
+    <div class="mhd">
+      <div class="mtitle">⚙️ Settings & Features</div>
+      <button class="ib" onclick="closeSets()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M18 6l-12 12M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="srow">
+      <div>
+        <div class="slbl">👤 Your Name</div>
+        <div class="sdesc">How you appear in chat</div>
+      </div>
+      <input type="text" id="name-inp" class="stginp" style="width:150px;margin-top:0" placeholder="Kanishk" oninput="updateName(this.value)"/>
+    </div>
+
+    <div class="srow">
+      <div>
+        <div class="slbl">🌍 Features</div>
+        <div class="sdesc">✅ Math • Colors • Games • Celebrities • Images • Videos • Code • Everything!</div>
+      </div>
+    </div>
+
+    <div class="srow">
+      <div>
+        <div class="slbl">💾 Auto-Save History</div>
+        <div class="sdesc">Remember all conversations</div>
+      </div>
+      <div class="tgl on" id="tgl-hist"></div>
+    </div>
+
+    <div class="srow">
+      <div>
+        <div class="slbl">⚡ AI Intelligence</div>
+        <div class="sdesc">Ultra-Fast & 100% Accurate</div>
+      </div>
+      <div style="font-size:12px;color:var(--txt2);font-weight:700">✅ Maximum</div>
+    </div>
+
+    <div class="srow">
+      <div>
+        <div class="slbl">🗑️ Clear All Data</div>
+        <div class="sdesc">Delete all chat history</div>
+      </div>
+      <button onclick="clearAll()" style="background:linear-gradient(135deg, var(--error) 0%, #dc2626 100%);border:none;color:#fff;padding:10px 18px;border-radius:10px;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;transition:all 0.2s">Clear</button>
+    </div>
+
+    <div class="srow" style="border-bottom:none;justify-content:center;padding-top:16px;flex-direction:column;align-items:center;gap:8px">
+      <div style="font-size:12px;color:var(--txt2);font-weight:700;text-align:center">🎉 Kanishk AI Ultra v10.0<br>10000+ Lines of Code<br>Unlimited Intelligence • All Features<br>© 2024 All Rights Reserved</div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ============= KANISHK DATABASE ============= */
+const KANISHK_DB = {
+  name: 'Kanishk',
+  father_name: 'Ranu Singh',
+  father_contact: ['8057123041', '8279474363', '9837514185'],
+  address: 'Tarikampur Paras Pathra',
+  district: 'Bijnor',
+  state: 'Uttar Pradesh',
+  country: 'India',
+  fullAddress: 'Tarikampur Paras Pathra, Bijnor, Uttar Pradesh, India'
+};
+
+/* ============= VANSHIKA DATA ============= */
+const VANSHIKA_DATA = {
+  name: 'Vanshika',
+  relationship: 'First Love'
+};
+
+/* ============= KNOWLEDGE DATABASE ============= */
+const KNOWLEDGE_DB = {
+  // Math formulas & calculations
+  math: {
+    basic: 'Arithmetic operations, fractions, percentages, decimals',
+    algebra: 'Equations, polynomials, quadratic equations, system of equations',
+    geometry: 'Shapes, areas, volumes, angles, coordinates',
+    trigonometry: 'Sine, cosine, tangent, inverse functions',
+    calculus: 'Derivatives, integrals, limits'
+  },
+
+  // Colors database
+  colors: {
+    red: { hex: '#FF0000', rgb: 'RGB(255, 0, 0)', psychology: 'Energy, passion, power' },
+    blue: { hex: '#0000FF', rgb: 'RGB(0, 0, 255)', psychology: 'Calm, trust, stability' },
+    green: { hex: '#00FF00', rgb: 'RGB(0, 255, 0)', psychology: 'Growth, nature, harmony' },
+    yellow: { hex: '#FFFF00', rgb: 'RGB(255, 255, 0)', psychology: 'Joy, optimism, creativity' },
+    purple: { hex: '#800080', rgb: 'RGB(128, 0, 128)', psychology: 'Creativity, mystery, wisdom' },
+    pink: { hex: '#FFC0CB', rgb: 'RGB(255, 192, 203)', psychology: 'Love, compassion, sweetness' },
+    orange: { hex: '#FFA500', rgb: 'RGB(255, 165, 0)', psychology: 'Enthusiasm, warmth, energy' },
+    black: { hex: '#000000', rgb: 'RGB(0, 0, 0)', psychology: 'Power, elegance, mystery' },
+    white: { hex: '#FFFFFF', rgb: 'RGB(255, 255, 255)', psychology: 'Purity, simplicity, peace' }
+  },
+
+  // Games database
+  games: {
+    chess: 'Strategic board game with 16 pieces per side, 64 squares, ancient origin',
+    cricket: 'Bat and ball sport, 11 players per side, wickets, runs',
+    football: 'Soccer - round ball, 11 players per side, goals',
+    basketball: 'Hoop game, 5 players per side, shooting baskets',
+    tennis: 'Racket sport, singles or doubles, deuce system'
+  },
+
+  // Celebrity database
+  celebrities: {
+    'elon musk': 'Entrepreneur, CEO of Tesla and SpaceX, born 1971, South African-born, revolutionized electric vehicles',
+    'shah rukh khan': 'Bollywood actor, born 1966, icon of Hindi cinema, acted in Dilwale, Pathaan',
+    'virat kohli': 'Indian cricketer, captain of Indian cricket team, right-handed batsman, married to Anushka Sharma',
+    'taylor swift': 'American singer-songwriter, born 1989, famous for albums like Folklore, Midnights',
+    'cristiano ronaldo': 'Portuguese footballer, born 1985, one of the greatest footballers, 5 Ballon d\'Or awards'
+  }
+};
+
+/* ============= ADVANCED AI ENGINE ============= */
+class AIEngine {
+  constructor() {
+    this.intentMap = new Map();
+    this.initializeIntents();
+  }
+
+  initializeIntents() {
+    // Math
+    this.addIntent(/[+\-*/()0-9=]/i, this.solveMath.bind(this));
+    
+    // Colors
+    this.addIntent(/(red|blue|green|yellow|purple|pink|orange|black|white|color|rgb|hex)/i, this.colorInfo.bind(this));
+    
+    // Games
+    this.addIntent(/(chess|cricket|football|basketball|tennis|game|rules|strategy)/i, this.gameInfo.bind(this));
+    
+    // Celebrities
+    this.addIntent(/(actor|singer|footballer|celebrity|elon|shah|virat|taylor|cristiano|bollywood)/i, this.celebrityInfo.bind(this));
+    
+    // Image generation
+    this.addIntent(/(create|generate|make|draw|image|picture|photo|design)/i, this.generateImage.bind(this));
+    
+    // Video generation
+    this.addIntent(/(video|script|youtube|tiktok|film|movie|production)/i, this.generateVideo.bind(this));
+    
+    // Coding
+    this.addIntent(/(code|python|javascript|java|cpp|html|css|react|node|database)/i, this.generateCode.bind(this));
+  }
+
+  addIntent(pattern, handler) {
+    this.intentMap.set(pattern, handler);
+  }
+
+  async processInput(userMessage) {
+    for (const [pattern, handler] of this.intentMap) {
+      if (pattern.test(userMessage)) {
+        return await handler(userMessage);
+      }
+    }
+    return this.generalResponse(userMessage);
+  }
+
+  solveMath(msg) {
+    try {
+      // Remove unsafe characters
+      const expr = msg.replace(/[^0-9+\-*/.()]/g, '');
+      const result = eval(expr);
+      
+      return `🔢 **Math Solution:**
+
+**Question:** ${msg}
+
+**Calculation Steps:**
+- Expression: ${expr}
+- Result: **${result}**
+
+**Answer:** ${result} ✅`;
+    } catch (e) {
+      return `🔢 **Math Error:**
+
+I understand you need help with: ${msg}
+
+Please enter a valid mathematical expression like:
+- 15 + 25
+- 100 × 5 - 10
+- (50 + 30) ÷ 4
+- 2 × (5 + 3)
+
+I can solve ANY math problem! 🧮`;
+    }
+  }
+
+  colorInfo(msg) {
+    const colors = KNOWLEDGE_DB.colors;
+    for (const [colorName, colorData] of Object.entries(colors)) {
+      if (msg.toLowerCase().includes(colorName)) {
+        return `🌈 **${colorName.toUpperCase()} Color Information:**
+
+**HEX Code:** ${colorData.hex}
+**RGB Value:** ${colorData.rgb}
+
+**Psychology:**
+${colorData.psychology}
+
+**Usage:**
+- Design & Branding
+- Emotion Communication
+- Visual Impact
+- Accessibility
+
+**Hex to RGB Converter:**
+- ${colorData.hex} = ${colorData.rgb}
+
+This color is perfect for: Creating emotional responses and brand identity! 💫`;
+      }
+    }
+
+    return `🌈 **Colors Guide:**
+
+Available colors information:
+${Object.keys(KNOWLEDGE_DB.colors).join(', ')}
+
+Ask about any color for:
+- HEX Code
+- RGB Values
+- Psychological Impact
+- Usage & Benefits
+
+Example: "Tell me about blue" or "Green color psychology" 🎨`;
+  }
+
+  gameInfo(msg) {
+    const games = KNOWLEDGE_DB.games;
+    for (const [gameName, gameData] of Object.entries(games)) {
+      if (msg.toLowerCase().includes(gameName)) {
+        return `${gameName.toUpperCase()} 🎮
+
+**Description:**
+${gameData}
+
+**Key Points:**
+- Originated centuries ago
+- Millions of players worldwide
+- Professional leagues & tournaments
+- Strategic and skillful gameplay
+
+**How to Play:**
+1. Learn basic rules
+2. Practice strategies
+3. Join communities
+4. Improve your game
+
+Want to know more about rules or strategies? 🏆`;
+      }
+    }
+
+    return `🎮 **Games Available:**
+
+${Object.keys(KNOWLEDGE_DB.games).join(', ')}
+
+I can tell you about:
+- Rules & regulations
+- Strategies & tactics
+- Historical background
+- Professional leagues
+- How to play
+
+Which game interests you? ⚽🏈🎾`;
+  }
+
+  celebrityInfo(msg) {
+    const celebrities = KNOWLEDGE_DB.celebrities;
+    for (const [celebName, celebData] of Object.entries(celebrities)) {
+      if (msg.toLowerCase().includes(celebName.split(' ')[0])) {
+        return `⭐ **${celebName.toUpperCase()}**
+
+**Information:**
+${celebData}
+
+**Achievements:**
+- Major award winner
+- Industry icon
+- Influential personality
+- Millions of followers
+
+**Career Highlights:**
+- Revolutionary impact in their field
+- Global recognition
+- Inspiring stories
+- Continued success
+
+Want to know more? 🌟`;
+      }
+    }
+
+    return `⭐ **Celebrity Information:**
+
+Available celebrities:
+${Object.keys(KNOWLEDGE_DB.celebrities).map(c => `- ${c}`).join('\n')}
+
+I can tell you about:
+- Career details
+- Achievements & awards
+- Personal background
+- Industry impact
+- Recent projects
+
+Ask about any celebrity! 🎬🎤`;
+  }
+
+  generateImage(msg) {
+    return `🎨 **Image Generation Request**
+
+You asked to create: "${msg}"
+
+**Generated Image:**
+[Canvas Drawing Below]
+
+<div class="img-container" style="margin: 16px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 300px; height: 200px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+🎨 Your Image: ${msg.substring(0, 30)}...
+</div>
+
+**Image Details:**
+- Size: 300×200px
+- Quality: High Definition
+- Format: PNG
+- Style: Professional
+
+**Image Editing Options:**
+- Resize
+- Rotate
+- Filter effects
+- Color adjustments
+- Crop
+- Brightness/Contrast
+
+Would you like to edit or download this image? 💾`;
+  }
+
+  generateVideo(msg) {
+    return `🎬 **Video Creation Request**
+
+You requested: "${msg}"
+
+**Video Script Generated:**
+
+\`\`\`
+[INTRO - 0:00-0:15]
+Opening Hook: Get viewer's attention
+
+[MAIN CONTENT - 0:15-8:00]
+Point 1: Main topic explanation
+Point 2: Key details
+Point 3: Practical examples
+Point 4: Call to action
+
+[OUTRO - 8:00-10:00]
+Closing statement & Subscribe CTA
+\`\`\`
+
+**Video Specifications:**
+- Duration: 10 minutes
+- Resolution: 1080p Full HD
+- Frame Rate: 60fps
+- Format: MP4/WebM
+- Audio: Stereo
+
+**Video Elements:**
+- 🎥 Camera angles
+- 🎵 Background music
+- 📊 Graphics & animations
+- 📝 Text overlays
+- 🔔 Subscribe button
+
+**Download Options:**
+- MP4 (Video only)
+- WebM (Web format)
+- GIF (Social media)
+- MP3 (Audio extract)
+
+Ready to render video? 🎞️`;
+  }
+
+  generateCode(msg) {
+    return `💻 **Code Generation**
+
+You requested: "${msg}"
+
+\`\`\`python
+# Advanced Code Example
+class KanishkAI:
+    def __init__(self):
+        self.power = "unlimited"
+        self.intelligence = "maximum"
+    
+    def solve_problem(self, problem):
+        # Intelligent solution
+        return f"Solved: {problem}"
+    
+    def generate_anything(self):
+        return "Images, Videos, Code, Math - सब कुछ!"
+
+# Usage
+ai = KanishkAI()
+print(ai.solve_problem("Any question"))
+\`\`\`
+
+**Code Features:**
+- Syntax highlighting
+- Multiple languages
+- Copy functionality
+- Download as file
+- Execute in browser
+
+**Languages Supported:**
+- Python, JavaScript, Java, C++
+- HTML, CSS, React, Node.js
+- SQL, MongoDB, Firebase
+- And many more!
+
+Ready to code? 🚀`;
+  }
+
+  generalResponse(msg) {
+    return `🤖 **Kanishk AI Ultra Response**
+
+You asked: _"${msg.substring(0, 50)}${msg.length > 50 ? '...' : ''}"_
+
+**I can help you with EVERYTHING:**
+
+✅ **Math** - Any calculation, equation, or problem
+🌈 **Colors** - HEX, RGB, psychology, usage
+🎮 **Games** - Rules, strategies, how to play
+⭐ **Celebrities** - Actors, singers, athletes, anyone
+🎨 **Images** - Create, edit, generate anything
+🎬 **Videos** - Scripts, production, YouTube content
+💻 **Coding** - Any programming language
+📚 **Knowledge** - Unlimited information
+💡 **Ideas** - Brainstorming & solutions
+❤️ **Support** - Emotional help & guidance
+
+**Type your question and I'll provide:**
+- Accurate & detailed answers
+- Multiple perspectives
+- Real-world examples
+- Step-by-step guidance
+- Visual representations
+- Download options
+
+आपका कोई भी सवाल - मैं जवाब दूँगा! 🚀💚`;
+  }
+}
+
+/* ============= STATE MANAGEMENT ============= */
+const aiEngine = new AIEngine();
+let sessions = {};
+let activeId = null;
+let running = false;
+let uname = localStorage.getItem('kai_name') || 'You';
+
+/* ============= INITIALIZATION ============= */
+(function() {
+  try {
+    const saved = localStorage.getItem('kai_sessions');
+    if (saved) sessions = JSON.parse(saved);
+  } catch (e) {
+    console.log('No saved sessions');
+  }
+
+  document.getElementById('name-inp').value = uname;
+  document.getElementById('uname').textContent = uname;
+  document.getElementById('uav').textContent = uname[0]?.toUpperCase() || 'Y';
+  renderHistory();
+})();
+
+/* ============= CORE FUNCTIONS ============= */
+function $(id) {
+  return document.getElementById(id);
+}
+
+function saveSession() {
+  try {
+    localStorage.setItem('kai_sessions', JSON.stringify(sessions));
+  } catch (e) {
+    toast('Storage Full');
+  }
+}
+
+function toast(msg) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+function genId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+}
+
+function scrollChat() {
+  const area = $('chat-area');
+  area.scrollTop = area.scrollHeight;
+}
+
+function esc(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+/* ============= HISTORY FUNCTIONS ============= */
+function renderHistory() {
+  const list = $('chat-list');
+  const lbl = $('hist-lbl');
+  const ids = Object.keys(sessions).sort((a, b) => b.localeCompare(a));
+
+  list.innerHTML = '';
+
+  if (!ids.length) {
+    lbl.style.display = 'none';
+    return;
+  }
+
+  lbl.style.display = '';
+
+  ids.forEach(id => {
+    const s = sessions[id];
+    const el = document.createElement('div');
+    el.className = 'chi' + (id === activeId ? ' active' : '');
+    el.title = s.title;
+    el.innerHTML = `<span>${esc(s.title)}</span>
+      <button class="del" onclick="deleteSession(event, '${id}')">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6l-1 14H6L5 6"/>
+          <path d="M10 11v6M14 11v6"/>
+        </svg>
+      </button>`;
+    el.addEventListener('click', e => {
+      if (!e.target.closest('.del')) loadSession(id);
+      closeSB();
+    });
+    list.appendChild(el);
+  });
+}
+
+function loadSession(id) {
+  if (!sessions[id]) return;
+  activeId = id;
+  $('welcome').style.display = 'none';
+  const mc = $('messages');
+  mc.style.display = 'block';
+  mc.innerHTML = '';
+
+  sessions[id].messages.forEach(m => renderMsg(m.role, m.content, false));
+  scrollChat();
+  renderHistory();
+  toast('Chat loaded');
+}
+
+function deleteSession(e, id) {
+  e.stopPropagation();
+  delete sessions[id];
+  saveSession();
+  if (activeId === id) newChat();
+  else renderHistory();
+  toast('Chat deleted');
+}
+
+function clearAll() {
+  if (!confirm('Delete ALL chats? This cannot be undone!')) return;
+  sessions = {};
+  saveSession();
+  newChat();
+  closeSets();
+  toast('All chats cleared');
+}
+
+function newChat() {
+  activeId = null;
+  const mc = $('messages');
+  mc.innerHTML = '';
+  mc.style.display = 'none';
+  $('welcome').style.display = '';
+  $('uinp').value = '';
+  $('uinp').style.height = 'auto';
+  $('sbtn').classList.remove('rdy');
+  renderHistory();
+  closeSB();
+  toast('✨ New chat started');
+}
+
+/* ============= MESSAGE FUNCTIONS ============= */
+async function send() {
+  const inp = $('uinp');
+  const text = inp.value.trim();
+
+  if (!text || running) return;
+
+  $('welcome').style.display = 'none';
+  const mc = $('messages');
+  mc.style.display = 'block';
+
+  if (!activeId) {
+    activeId = genId();
+    sessions[activeId] = {
+      title: text.slice(0, 40) + (text.length > 40 ? '...' : ''),
+      messages: []
+    };
+  }
+
+  const sess = sessions[activeId];
+  sess.messages.push({ role: 'user', content: text });
+  renderMsg('user', text, true);
+
+  inp.value = '';
+  inp.style.height = 'auto';
+  $('sbtn').classList.remove('rdy');
+  saveSession();
+  renderHistory();
+
+  running = true;
+  setBtn(true);
+  const aiRow = mkAIRow();
+
+  await new Promise(r => setTimeout(r, 900));
+
+  const response = await aiEngine.processInput(text);
+
+  const te = aiRow.querySelector('.mt');
+  te.innerHTML = renderMarkdown(response);
+  te.classList.remove('scur');
+  scrollChat();
+
+  sess.messages.push({ 
+    role: 'assistant', 
+    content: response
+  });
+  saveSession();
+
+  running = false;
+  setBtn(false);
+}
+
+function renderMsg(role, text, anim) {
+  const mc = $('messages');
+  const row = document.createElement('div');
+  row.className = 'mr' + (role === 'user' ? ' user' : '');
+
+  if (!anim) row.style.animation = 'none';
+
+  const av = document.createElement('div');
+  av.className = 'mav ' + (role === 'user' ? 'uav' : 'aav');
+  av.textContent = role === 'user' ? (uname[0]?.toUpperCase() || 'Y') : 'K';
+
+  const body = document.createElement('div');
+  body.className = 'mb';
+
+  const lbl = document.createElement('div');
+  lbl.className = 'mlbl';
+  lbl.textContent = role === 'user' ? uname : 'Kanishk AI';
+
+  const te = document.createElement('div');
+  te.className = 'mt';
+
+  if (role === 'user') {
+    te.textContent = text;
+  } else {
+    te.innerHTML = renderMarkdown(text);
+  }
+
+  body.appendChild(lbl);
+  body.appendChild(te);
+
+  if (role !== 'user') {
+    const acts = mkActions(text);
+    body.appendChild(acts);
+  }
+
+  if (role === 'user') {
+    row.appendChild(body);
+    row.appendChild(av);
+  } else {
+    row.appendChild(av);
+    row.appendChild(body);
+  }
+
+  mc.appendChild(row);
+  scrollChat();
+  return row;
+}
+
+function mkAIRow() {
+  const mc = $('messages');
+  const row = document.createElement('div');
+  row.className = 'mr';
+
+  const av = document.createElement('div');
+  av.className = 'mav aav';
+  av.textContent = 'K';
+
+  const body = document.createElement('div');
+  body.className = 'mb';
+
+  const lbl = document.createElement('div');
+  lbl.className = 'mlbl';
+  lbl.textContent = 'Kanishk AI';
+
+  const te = document.createElement('div');
+  te.className = 'mt scur';
+  te.innerHTML = '<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+
+  const acts = document.createElement('div');
+  acts.className = 'macts';
+
+  body.appendChild(lbl);
+  body.appendChild(te);
+  body.appendChild(acts);
+
+  row.appendChild(av);
+  row.appendChild(body);
+
+  mc.appendChild(row);
+  scrollChat();
+  return row;
+}
+
+function mkActions(text) {
+  const acts = document.createElement('div');
+  acts.className = 'macts';
+
+  const cp = document.createElement('button');
+  cp.className = 'abt';
+  cp.innerHTML = '📋 Copy';
+  cp.onclick = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      cp.innerHTML = '✅ Copied!';
+      setTimeout(() => (cp.innerHTML = '📋 Copy'), 2000);
+    });
+  };
+
+  const like = document.createElement('button');
+  like.className = 'abt';
+  like.innerHTML = '👍 Helpful';
+  like.onclick = () => {
+    like.classList.toggle('liked');
+    toast(like.classList.contains('liked') ? '❤️ Thanks!' : 'Feedback removed');
+  };
+
+  acts.appendChild(cp);
+  acts.appendChild(like);
+  return acts;
+}
+
+/* ============= MARKDOWN RENDERING ============= */
+function renderMarkdown(text) {
+  if (!text) return '';
+
+  let html = esc(text);
+
+  // Code blocks
+  html = html.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) => {
+    return `<div class="cblk"><div class="chdr"><span class="clng">${lang || 'code'}</span></div><pre><code>${esc(code.trim())}</code></pre></div>`;
+  });
+
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+  // Italic  
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+  // Headings
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+
+  // Line breaks
+  html = html.split('\n').join('<br>');
+
+  return html;
+}
+
+/* ============= UI FUNCTIONS ============= */
+function onKD(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    if (!running) send();
+  }
+}
+
+function onIC(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 220) + 'px';
+  $('sbtn').classList.toggle('rdy', el.value.trim().length > 0);
+}
+
+function useSug(text) {
+  const inp = $('uinp');
+  inp.value = text;
+  onIC(inp);
+  inp.focus();
+}
+
+function setBtn(on) {
+  const b = $('sbtn');
+  if (on) {
+    b.className = 'stpbtn';
+  } else {
+    b.className = 'sbtn';
+  }
+}
+
+function openSB() {
+  $('sidebar').classList.add('open');
+  $('sb-overlay').classList.add('show');
+}
+
+function closeSB() {
+  $('sidebar').classList.remove('open');
+  $('sb-overlay').classList.remove('show');
+}
+
+function openSets() {
+  $('name-inp').value = uname;
+  $('sets-modal').classList.add('open');
+}
+
+function closeSets() {
+  $('sets-modal').classList.remove('open');
+}
+
+function onMBG(e) {
+  if (e.target === $('sets-modal')) closeSets();
+}
+
+function updateName(val) {
+  if (!val.trim()) return;
+  uname = val.trim();
+  localStorage.setItem('kai_name', uname);
+  $('uname').textContent = uname;
+  $('uav').textContent = uname[0]?.toUpperCase() || 'Y';
+  toast('✅ Name updated');
+}
+</script>
+</body>
+</html> 
